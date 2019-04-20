@@ -1,0 +1,39 @@
+/* Using Arduino for Citizen Science!
+   Project 2: Hard(er) Digital Sensors: DHT11 temp and humidity sensor
+    This project reads in the DHT temp and humidity sensor and prints 
+    the data to the Serial Monitor in this format: 
+       temp, humidity
+      
+ Written by jenfoxbot <jenfoxbot@gmail.com>
+ Code is MIT license (non-commercial open-source)
+*/
+//Snag the DHT libraries
+#include <DHT.h>
+#include <DHT_U.h>
+
+//Create a DHT object and set it to pin 7
+dht DHT;
+#define DHT11_PIN 7
+
+//Set up a (global) variables to store the sensor reading
+int sensorReading;
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  sensorReading = DHT.read11(DHT11_PIN);
+  Serial.print(DHT.temperature);
+  Serial.print(",");
+  Serial.print(DHT.humidity);
+  Serial.println();
+
+  //Add a delay so we can see the readings
+  delay(1000);
+
+}
