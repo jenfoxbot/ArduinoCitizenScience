@@ -1,0 +1,38 @@
+/* Using Arduino for Citizen Science!
+   Project 3: Simple Analog Sensors: Photoresistor, aka light sensor!
+      Connect  one lead of your sensor to the 5V power out.
+      Connect one resistor lead to the remaining sensor lead, 
+           and the other resistor lead to GND.
+      Connect a jumper wire between the sensor lead and the resistor to A0.
+     
+ Written by jenfoxbot <jenfoxbot@gmail.com>
+ Code is MIT license (non-commercial open-source)
+*/
+
+//Set up our (global) variables to store the sensor pin
+// and the sensor reading
+int sensorPin = A0;
+int sensorReading;
+
+void setup() {
+  // put your setup code here, to run once:
+  //Initialize the serial monitor (aka "window" into Arduino board)
+  Serial.begin(9600); 
+
+  //Tell the Arduino what pin(s) to use
+  pinMode(sensorPin, INPUT);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  //1) Read the status of the sensor (1 = signal, 0 = no signal)
+  sensorReading = analogRead(sensorPin);
+
+  //2) Print the sensor value
+  Serial.println(sensorReading);
+
+  //3) Add a small delay so we can keep up w/ those readings
+  delay(100);
+
+}
